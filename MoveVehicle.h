@@ -1,3 +1,6 @@
+#ifndef OOP5_MOVEVEHICLE_H
+#define OOP5_MOVEVEHICLE_H
+
 #include "Direction.h"
 #include "CellType.h"
 #include "Utilities.h"
@@ -59,4 +62,6 @@ template <typename boardGame, int R, int Corigin, int Cend, Direction D, int A>
 struct moveAllPieces{
 
 };
+
+#endif //OOP5_MOVEVEHICLE_H
 

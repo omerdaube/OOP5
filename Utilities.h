@@ -1,4 +1,5 @@
-
+#ifndef OOP5_UTILITIES_H
+#define OOP5_UTILITIES_H
 
 template <bool Expr, typename T, typename F>
 struct Conditional;
@@ -19,3 +20,4 @@ struct ConditionalInteger{
     static constexpr int value = Expr ? T : F;
 };
 
+#endif //OOP5_UTILITIES_H

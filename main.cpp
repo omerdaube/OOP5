@@ -1,10 +1,5 @@
 #include <iostream>
 #include "RushHour.h"
-#include "Printer.h"
-#include "BoardCell.h"
-#include "GameBoard.h"
-#include "MoveVehicle.h"
-#include "CellType.h"
 
 typedef GameBoard< List<
         List < BoardCell< EMPTY , RIGHT , 1>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< O , DOWN , 3>, BoardCell< EMPTY , RIGHT , 0> >,
