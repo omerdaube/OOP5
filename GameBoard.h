@@ -3,11 +3,11 @@
 
 #include "List.h"
 #include "BoardCell.h"
-template <typename B, int W, int N>
+template <typename list_of_lists>
 struct GameBoard{
-    typedef B board;
-    static constexpr int width = W;
-    static constexpr int length = N;
+    typedef list_of_lists board;
+    static constexpr int width = board::head::size;
+    static constexpr int length = board::size;
 };
 
 #endif //OOP5_GAMEBOARD_H
