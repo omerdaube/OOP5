@@ -6,5 +6,4 @@ struct BoardCell{
     static constexpr CellType type = CT;
     static constexpr Direction direction = D;
     static constexpr int length = N;
-    ///TO DO: IMP
 };

@@ -1,23 +1,31 @@
-#include "List.h"
-#include "Utilities.h"
-#include "int.h"
 #include <iostream>
+#include "RushHour.h"
+#include "Printer.h"
+#include "BoardCell.h"
+#include "GameBoard.h"
 #include "MoveVehicle.h"
-using namespace std;
-int main(){
-    typedef List<Int<1>, Int<89>, Int<3>> list;
-    static_assert(list::head::value == 1, ""); // = Int<1>
-    //typedef typename list::next listTail; // = List<Int<2>, Int<3>>
-    cout << list::size; // = 3
-    cout << GetAtIndex<1, list>::value::value; // = Int<1>
-    //GetAtIndex<2, list>::value;
-    typedef typename PrependList<Int<4>, list>::list newList; // = List< Int<4>,
-    cout << "h" << GetAtIndex<0, newList>::value::value << "h";
-    typedef typename SetAtIndex<2, Int<868696>, newList>::list newList2; // = List< Int<4>, Int<2>, Int<868696>>
-    cout << GetAtIndex<2, newList2>::value::value;
-    typedef typename Conditional<(0 == 1), Int<0>, Int<1>>::value test1; // = Int<0>
-    cout << "test1::"  << test1::value;
+#include "CellType.h"
 
-    int amount = Move<X, RIGHT, 1>::amount;
+typedef GameBoard< List<
+        List < BoardCell< EMPTY , RIGHT , 1>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< O , DOWN , 3>, BoardCell< EMPTY , RIGHT , 0> >,
+        List < BoardCell< EMPTY , RIGHT , 2>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< A , RIGHT , 2>, BoardCell< A , LEFT , 2>, BoardCell< O , DOWN , 3>, BoardCell< EMPTY , RIGHT , 0> >,
+        List < BoardCell< EMPTY , RIGHT , 3>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< X , RIGHT , 2>, BoardCell< X , LEFT , 2>, BoardCell< O , UP , 3>, BoardCell< EMPTY , RIGHT , 0> >,
+        List < BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0> >,
+        List < BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< B , DOWN , 2>, BoardCell< P , RIGHT , 3>, BoardCell< P , RIGHT , 3>, BoardCell< P , LEFT , 3> >,
+        List < BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< B , UP , 2>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< C , RIGHT , 2>, BoardCell< C , LEFT , 2> >
+> > gameBoard;
+
+typedef List<
+        Move < B, UP, 1 > , Move < C, LEFT, 4 > , Move < A, LEFT, 2 > , Move < X, LEFT, 2 > , Move < B, UP, 3 > , Move < P, LEFT, 3 > , Move < O, DOWN, 3 >
+> moves;
+
+int main(){
+
+    static_assert(List<BoardCell< EMPTY , RIGHT , 0>,BoardCell< EMPTY , RIGHT , 0>,BoardCell< EMPTY , RIGHT , 0>>::size == 3, "Fail");
+    static_assert(List<>::size == 0, "Fail");
+    typedef MoveVehicle<gameBoard, 2, 3, LEFT, 2>::board b1; // Valid move
+    static_assert(CheckSolution<gameBoard, moves>::result, "Fail"); // Game should be solved
+
     return 0;
 }
+
