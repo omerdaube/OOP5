@@ -10,9 +10,14 @@ typedef GameBoard< List<
         List < BoardCell< EMPTY , RIGHT , 0>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< B , UP , 2>, BoardCell< EMPTY , RIGHT , 0>, BoardCell< C , RIGHT , 2>, BoardCell< C , LEFT , 2> >
 > > gameBoard;
 
+//typedef List<
+//        Move < X, LEFT, 1 >
+//> moves;
+
 typedef List<
         Move < B, UP, 1 > , Move < C, LEFT, 4 > , Move < A, LEFT, 2 > , Move < X, LEFT, 2 > , Move < B, UP, 3 > , Move < P, LEFT, 3 > , Move < O, DOWN, 3 >
 > moves;
+
 
 int main(){
 
@@ -20,7 +25,6 @@ int main(){
     static_assert(List<>::size == 0, "Fail");
     typedef MoveVehicle<gameBoard, 2, 3, LEFT, 2>::board b1; // Valid move
     static_assert(CheckSolution<gameBoard, moves>::result, "Fail"); // Game should be solved
-
     return 0;
 }
 

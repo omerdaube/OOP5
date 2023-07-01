@@ -46,5 +46,4 @@ struct Transpose<List<RowsHead>>{
     typedef typename AsVerticalList<RowsHead>::list matrix;
 };
 
-
 #endif //PART2_TRANSPOSELIST_H
